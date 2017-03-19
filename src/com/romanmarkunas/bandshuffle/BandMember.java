@@ -12,9 +12,9 @@ public class BandMember {
     private Load maxLoad;
     private ArrayList<LocalDate> unavailable;
     private boolean canLead;
+    private Instrument selectedInstrument;
 
 
-    public String getName() { return this.name; }
-    public String getSurname() { return surname; }
     public String getFullName() { return (name + " " + surname); }
+    public Instrument getSelectedInstrument() { return selectedInstrument; }
 }
