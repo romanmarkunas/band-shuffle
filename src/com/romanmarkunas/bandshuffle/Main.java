@@ -38,9 +38,9 @@ public class Main {
 
     private static void selectRandomInstrument(BandMember bm) {
 
-        List instruments = bm.getInstruments();
+        List<Instrument> instruments = bm.getInstruments();
         Random randomizer = new Random();
         int selected = randomizer.nextInt(instruments.size());
-        bm.selectInstrument(Instrument.values()[selected]);
+        bm.selectInstrument(instruments.get(selected));
     }
 }

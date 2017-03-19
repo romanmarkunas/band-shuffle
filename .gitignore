@@ -2,6 +2,9 @@
 .idea/
 band-shuffle.iml
 
+# Output jars
+out/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
