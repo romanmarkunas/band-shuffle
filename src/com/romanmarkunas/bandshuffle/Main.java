@@ -1,4 +1,4 @@
-package com.romanmarkunas;
+package com.romanmarkunas.bandshuffle;
 
 import java.util.*;
 
