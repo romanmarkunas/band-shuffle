@@ -8,6 +8,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // TODO - strategy patter for shuffle class to choose different sorters: spread evenly, random - these will
+        // automatically spread different people in the list of performance dates
+
+        // TODO - algorithm must copy all members from database, sort them according to criterias based on chosen sorter
+        // During shuffling you take first member and if it fits you remove it from list, update it and put its sorting
+        // criteria in special variables. it is then inserted back in list during further parsing when it is appropriate
+        // this can remove overhead of resorting list every time if done properly. OR maybe it is more efficient to resort
+        // every time, but use binary tree. There is option to use hash list for that matter also and then on hash collision
+        // use provided sorting strategy
+
         BandMemberDAO dao = new BandMemberDAO();
         BandMemberDisplayFormatter formatter = new BandMemberDisplayFormatter();
 
