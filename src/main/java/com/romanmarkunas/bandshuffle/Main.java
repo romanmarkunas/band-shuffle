@@ -17,7 +17,7 @@ public class Main {
         // this can remove overhead of resorting list every time if done properly. OR maybe it is more efficient to resort
         // every time, but use binary tree. There is option to use hash list for that matter also and then on hash collision
         // use provided sorting strategy
-
+/*
         BandMemberDAO dao = new BandMemberDAO();
         BandMemberDisplayFormatter formatter = new BandMemberDisplayFormatter();
 
@@ -42,15 +42,15 @@ public class Main {
 
         dao.delete(ash);
         dao.delete(phil);
-        dao.delete(eli);
+        dao.delete(eli);*/
     }
 
-
+/*
     private static void selectRandomInstrument(BandMember bm) {
 
         List<Instrument> instruments = bm.getInstruments();
         Random randomizer = new Random();
         int selected = randomizer.nextInt(instruments.size());
         bm.selectInstrument(instruments.get(selected));
-    }
+    }*/
 }
