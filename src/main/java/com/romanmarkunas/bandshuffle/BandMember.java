@@ -11,6 +11,7 @@ public class BandMember {
                         // consider builder pattern here
     private String name;
     private String surname;
+    private Instrument instrument;
 //    private ArrayList<Instrument> instrumentList;
 //    private Instrument selectedInstrument;
 
@@ -20,10 +21,11 @@ public class BandMember {
 //    private boolean canLead;
 
 
-    BandMember(String name, String surname) {
+    BandMember(String name, String surname, Instrument instrument) {
 
         this.name = name;
         this.surname = surname;
+        this.instrument = instrument;
 //        this.instrumentList = new ArrayList<>();
 //        this.selectedInstrument = null;
     }
@@ -46,7 +48,10 @@ public class BandMember {
     }
 */
     String getFullName() { return (name + " " + surname); }
-//    List<Instrument> getInstruments() { return instrumentList; }
+
+    Instrument getInstrument() { return instrument; }
+
+    //    List<Instrument> getInstruments() { return instrumentList; }
 //    Instrument getSelectedInstrument() { return selectedInstrument; }
 
 

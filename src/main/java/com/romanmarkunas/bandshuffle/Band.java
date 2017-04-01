@@ -1,52 +1,100 @@
 package com.romanmarkunas.bandshuffle;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 class Band {
 
-    private int size;
-    private List<BandMember> memberList;
+    private final Map<Instrument, Integer> instrumentComposition;
+    private Map<Instrument, Integer> instrumentsToFill;
+    private Map<BandMember, List<Instrument>> members;
 
 
-    Band(int size) {
+    Band(Map<Instrument, Integer> instrumentComposition) {
 
-        this.size = size;
-        this.memberList = new ArrayList<>();
+        this.members = new HashMap<>();
+        this.instrumentComposition = new HashMap<>(instrumentComposition);
+        this.instrumentsToFill = new HashMap<>(instrumentComposition);
     }
 
 
-    boolean add(BandMember newMember) {
+    boolean add(BandMember member, Instrument instrument) {
 
-        if (this.full() || memberList.contains(newMember)) {
-            return false;
+        if (instrumentsToFill.containsKey(instrument)) {
+
+            int moreNeeded = instrumentsToFill.get(instrument);
+
+            if (moreNeeded > 0) {
+
+                if (!members.containsKey(member)) {
+
+                    members.put(member, new ArrayList<>(2));
+                }
+
+                List<Instrument> musicianInstruments = members.get(member);
+
+                if (!musicianInstruments.contains(instrument)) {
+
+                    members.get(member).add(instrument);
+
+                    instrumentsToFill.put(instrument, moreNeeded - 1);
+
+                    return true;
+                }
+            }
         }
-        else {
-            memberList.add(newMember);
+
+        return false;
+    }
+
+    boolean remove(BandMember member) {
+
+        if (members.containsKey(member)) {
+
+            List<Instrument> musicianInstruments = members.get(member);
+
+            for (Instrument i : musicianInstruments) {
+
+                instrumentsToFill.put(i, instrumentsToFill.get(i) + 1);
+            }
+
+            members.remove(member);
             return true;
         }
+
+        return false;
     }
 
     boolean full() {
 
-        return (memberList.size() >= size);
+        for (Integer moreNeeded : instrumentsToFill.values()) {
+
+            if (moreNeeded > 0) {
+
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    Band getComposition() {
+    Band getBandWithSameComposition() {
 
-        return new Band(size);
+        return new Band(instrumentComposition);
     }
 
-    int getSize() {
+    Map<Instrument, Integer> getInstrumentComposition() {
 
-        return size;
+        return new HashMap<>(instrumentComposition);
+    }
+
+    Map<BandMember, List<Instrument>> getMembers() {
+
+        return new HashMap<>(members);
     }
 
     @Override
     public String toString() {
 
-        return "Band{" +
-                    memberList +
-                '}';
+        return members.toString();
     }
 }

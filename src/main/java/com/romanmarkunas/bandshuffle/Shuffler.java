@@ -14,11 +14,13 @@ class Shuffler {
 
         for (int i = 1; i <= weeks; i++) {
 
-            Band band = referenceComposition.getComposition();
+            Band band = referenceComposition.getBandWithSameComposition();
 
             while (!band.full()) {
 
-                band.add(musicians.get(rn.nextInt(musicians.size())));
+                BandMember randomMusiscian = musicians.get(rn.nextInt(musicians.size()));
+
+                band.add(randomMusiscian, randomMusiscian.getInstrument());
             }
 
             rota.add(band);
