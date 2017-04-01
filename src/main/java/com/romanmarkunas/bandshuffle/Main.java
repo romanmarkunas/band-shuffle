@@ -17,6 +17,8 @@ public class Main {
         // this can remove overhead of resorting list every time if done properly. OR maybe it is more efficient to resort
         // every time, but use binary tree. There is option to use hash list for that matter also and then on hash collision
         // use provided sorting strategy
+
+        // create comparator objects for band members for dynamic sorting
 /*
         BandMemberDAO dao = new BandMemberDAO();
         BandMemberDisplayFormatter formatter = new BandMemberDisplayFormatter();

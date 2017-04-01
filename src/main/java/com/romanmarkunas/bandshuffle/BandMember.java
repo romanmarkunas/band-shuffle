@@ -48,4 +48,11 @@ public class BandMember {
     String getFullName() { return (name + " " + surname); }
 //    List<Instrument> getInstruments() { return instrumentList; }
 //    Instrument getSelectedInstrument() { return selectedInstrument; }
+
+
+    @Override
+    public String toString() {
+
+        return this.getFullName();
+    }
 }
