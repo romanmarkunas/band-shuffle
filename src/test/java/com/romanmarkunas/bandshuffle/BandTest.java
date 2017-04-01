@@ -17,6 +17,7 @@ public class BandTest {
     private BandMember mike;
     private BandMember igor;
     private BandMember linn;
+    private BandMember bill;
 
 
     @Before
@@ -29,6 +30,7 @@ public class BandTest {
         mike = new BandMember("Mike", "Foo", Instrument.KEYBOARD);
         igor = new BandMember("Igor", "Pro", Instrument.VOICE);
         linn = new BandMember("Linn", "Vue", Instrument.VOICE);
+        bill = new BandMember("Bill", "Doe", Instrument.BASE);
     }
 
     @Test
@@ -39,6 +41,8 @@ public class BandTest {
         testBandComposition.put(Instrument.VOICE, 1);
 
         testBand = new Band(testBandComposition);
+
+        assertFalse(testBand.add(bill, bill.getInstrument()));  // shouldn't add since no instrument of that kind needed
 
         assertTrue(testBand.add(john, john.getInstrument()));   // should add
         assertFalse(testBand.add(john, john.getInstrument()));  // do not add since it's the same musician and instrument
