@@ -8,7 +8,8 @@ public enum Talent {
     ACOUSTIC_GUITAR("Acoustic guitar"),
     ELECTRIC_GUITAR("Electric guitar"),
     BASE("Base"),
-    DRUMS("Drums");
+    DRUMS("Drums"),
+    LEAD("Lead");
 
 
     private String printableName;
@@ -18,6 +19,7 @@ public enum Talent {
 
         this.printableName = printableName;
     }
+
 
     @Override
     public String toString() {

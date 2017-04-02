@@ -14,5 +14,6 @@ public class TalentTest {
         assertEquals("Electric guitar", Talent.ELECTRIC_GUITAR.toString());
         assertEquals("Base", Talent.BASE.toString());
         assertEquals("Drums", Talent.DRUMS.toString());
+        assertEquals("Lead", Talent.LEAD.toString());
     }
 }
