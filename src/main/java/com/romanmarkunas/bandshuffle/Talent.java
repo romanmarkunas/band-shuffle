@@ -1,7 +1,7 @@
 package com.romanmarkunas.bandshuffle;
 
 
-public enum Instrument {
+public enum Talent {
 
     VOICE("Vocals"),
     KEYBOARD("Keys"),
@@ -14,7 +14,7 @@ public enum Instrument {
     private String printableName;
 
 
-    Instrument(String printableName) {
+    Talent(String printableName) {
 
         this.printableName = printableName;
     }

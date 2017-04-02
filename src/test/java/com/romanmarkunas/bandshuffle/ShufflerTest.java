@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
-
 public class ShufflerTest {
 
     private List<BandMember> bandMembers;
@@ -19,10 +17,10 @@ public class ShufflerTest {
     public void setUp() {
 
         bandMembers = new ArrayList<>();
-        bandMembers.add(new BandMember("John", "Doe", Instrument.ACOUSTIC_GUITAR));
-        bandMembers.add(new BandMember("Mike", "Foo", Instrument.KEYBOARD));
-        bandMembers.add(new BandMember("Igor", "Pro", Instrument.VOICE));
-        bandMembers.add(new BandMember("Linn", "Vue", Instrument.VOICE));
+        bandMembers.add(new BandMember("John", "Doe", Talent.ACOUSTIC_GUITAR));
+        bandMembers.add(new BandMember("Mike", "Foo", Talent.KEYBOARD));
+        bandMembers.add(new BandMember("Igor", "Pro", Talent.VOICE));
+        bandMembers.add(new BandMember("Linn", "Vue", Talent.VOICE));
     }
 
     @Test
@@ -30,10 +28,10 @@ public class ShufflerTest {
 
         Shuffler testShuffler = new Shuffler();
 
-        Map<Instrument, Integer> testBandComposition = new HashMap<>();
-        testBandComposition.put(Instrument.ACOUSTIC_GUITAR, 1);
-        testBandComposition.put(Instrument.KEYBOARD, 1);
-        testBandComposition.put(Instrument.VOICE, 1);
+        Map<Talent, Integer> testBandComposition = new HashMap<>();
+        testBandComposition.put(Talent.ACOUSTIC_GUITAR, 1);
+        testBandComposition.put(Talent.KEYBOARD, 1);
+        testBandComposition.put(Talent.VOICE, 1);
 
         System.out.println(testShuffler.shuffle(4, new Band(testBandComposition), bandMembers));
     }

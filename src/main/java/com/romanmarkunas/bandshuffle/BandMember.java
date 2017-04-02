@@ -1,9 +1,5 @@
 package com.romanmarkunas.bandshuffle;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class BandMember {
 
@@ -11,9 +7,9 @@ public class BandMember {
                         // consider builder pattern here
     private String name;
     private String surname;
-    private Instrument instrument;
-//    private ArrayList<Instrument> instrumentList;
-//    private Instrument selectedInstrument;
+    private Talent talent;
+//    private ArrayList<Talent> instrumentList;
+//    private Talent selectedInstrument;
 
 //
 //    private Load maxLoad;
@@ -21,17 +17,17 @@ public class BandMember {
 //    private boolean canLead;
 
 
-    BandMember(String name, String surname, Instrument instrument) {
+    BandMember(String name, String surname, Talent talent) {
 
         this.name = name;
         this.surname = surname;
-        this.instrument = instrument;
+        this.talent = talent;
 //        this.instrumentList = new ArrayList<>();
 //        this.selectedInstrument = null;
     }
 
 /*
-    void addInstrument(Instrument i) {
+    void addInstrument(Talent i) {
 
         if (!instrumentList.contains(i)) {
 
@@ -39,7 +35,7 @@ public class BandMember {
         }
     }
 
-    void selectInstrument(Instrument i) {
+    void selectInstrument(Talent i) {
 
         if (instrumentList.contains(i)) {
 
@@ -49,10 +45,10 @@ public class BandMember {
 */
     String getFullName() { return (name + " " + surname); }
 
-    Instrument getInstrument() { return instrument; }
+    Talent getTalent() { return talent; }
 
-    //    List<Instrument> getInstruments() { return instrumentList; }
-//    Instrument getSelectedInstrument() { return selectedInstrument; }
+    //    List<Talent> getInstruments() { return instrumentList; }
+//    Talent getSelectedInstrument() { return selectedInstrument; }
 
 
     @Override

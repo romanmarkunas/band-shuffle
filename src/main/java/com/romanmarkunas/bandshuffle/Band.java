@@ -4,24 +4,24 @@ import java.util.*;
 
 class Band {
 
-    private final Map<Instrument, Integer> instrumentComposition;
-    private Map<Instrument, Integer> instrumentsToFill;
-    private Map<BandMember, List<Instrument>> members;
+    private final Map<Talent, Integer> composition;
+    private Map<Talent, Integer> talentsToFill;
+    private Map<BandMember, List<Talent>> members;
 
 
-    Band(Map<Instrument, Integer> instrumentComposition) {
+    Band(Map<Talent, Integer> composition) {
 
         this.members = new HashMap<>();
-        this.instrumentComposition = new HashMap<>(instrumentComposition);
-        this.instrumentsToFill = new HashMap<>(instrumentComposition);
+        this.composition = new HashMap<>(composition);
+        this.talentsToFill = new HashMap<>(composition);
     }
 
 
-    boolean add(BandMember member, Instrument instrument) {
+    boolean add(BandMember member, Talent talent) {
 
-        if (instrumentsToFill.containsKey(instrument)) {
+        if (talentsToFill.containsKey(talent)) {
 
-            int moreNeeded = instrumentsToFill.get(instrument);
+            int moreNeeded = talentsToFill.get(talent);
 
             if (moreNeeded > 0) {
 
@@ -30,13 +30,13 @@ class Band {
                     members.put(member, new ArrayList<>(2));
                 }
 
-                List<Instrument> musicianInstruments = members.get(member);
+                List<Talent> musicianTalents = members.get(member);
 
-                if (!musicianInstruments.contains(instrument)) {
+                if (!musicianTalents.contains(talent)) {
 
-                    members.get(member).add(instrument);
+                    members.get(member).add(talent);
 
-                    instrumentsToFill.put(instrument, moreNeeded - 1);
+                    talentsToFill.put(talent, moreNeeded - 1);
 
                     return true;
                 }
@@ -50,11 +50,11 @@ class Band {
 
         if (members.containsKey(member)) {
 
-            List<Instrument> musicianInstruments = members.get(member);
+            List<Talent> musicianTalents = members.get(member);
 
-            for (Instrument i : musicianInstruments) {
+            for (Talent i : musicianTalents) {
 
-                instrumentsToFill.put(i, instrumentsToFill.get(i) + 1);
+                talentsToFill.put(i, talentsToFill.get(i) + 1);
             }
 
             members.remove(member);
@@ -66,7 +66,7 @@ class Band {
 
     boolean full() {
 
-        for (Integer moreNeeded : instrumentsToFill.values()) {
+        for (Integer moreNeeded : talentsToFill.values()) {
 
             if (moreNeeded > 0) {
 
@@ -79,15 +79,15 @@ class Band {
 
     Band getBandWithSameComposition() {
 
-        return new Band(instrumentComposition);
+        return new Band(composition);
     }
 
-    Map<Instrument, Integer> getInstrumentComposition() {
+    Map<Talent, Integer> getComposition() {
 
-        return new HashMap<>(instrumentComposition);
+        return new HashMap<>(composition);
     }
 
-    Map<BandMember, List<Instrument>> getMembers() {
+    Map<BandMember, List<Talent>> getMembers() {
 
         return new HashMap<>(members);
     }

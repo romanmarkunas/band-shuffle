@@ -13,8 +13,8 @@ public class BandMemberTest {
     @Before
     public void setUp() {
 
-        john = new BandMember("John", "Doe", Instrument.ACOUSTIC_GUITAR);
-        linn = new BandMember("Linn", "Vue", Instrument.VOICE);
+        john = new BandMember("John", "Doe", Talent.ACOUSTIC_GUITAR);
+        linn = new BandMember("Linn", "Vue", Talent.VOICE);
     }
 
 
@@ -35,7 +35,7 @@ public class BandMemberTest {
     @Test
     public void getInstrument() {
 
-        assertEquals(Instrument.ACOUSTIC_GUITAR, john.getInstrument());
-        assertEquals(Instrument.VOICE, linn.getInstrument());
+        assertEquals(Talent.ACOUSTIC_GUITAR, john.getTalent());
+        assertEquals(Talent.VOICE, linn.getTalent());
     }
 }

@@ -20,7 +20,7 @@ class Shuffler {
 
                 BandMember randomMusiscian = musicians.get(rn.nextInt(musicians.size()));
 
-                band.add(randomMusiscian, randomMusiscian.getInstrument());
+                band.add(randomMusiscian, randomMusiscian.getTalent());
             }
 
             rota.add(band);

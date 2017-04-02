@@ -24,13 +24,13 @@ public class Main {
         BandMemberDisplayFormatter formatter = new BandMemberDisplayFormatter();
 
         BandMember ash = new BandMember("Ash", "Richards");
-        ash.addInstrument(Instrument.BASE);
-        ash.addInstrument(Instrument.KEYBOARD);
+        ash.addInstrument(Talent.BASE);
+        ash.addInstrument(Talent.KEYBOARD);
         BandMember phil = new BandMember("Phil", "Wooley");
-        phil.addInstrument(Instrument.KEYBOARD);
-        phil.addInstrument(Instrument.VOICE);
+        phil.addInstrument(Talent.KEYBOARD);
+        phil.addInstrument(Talent.VOICE);
         BandMember eli = new BandMember("Eli", "Hawkins");
-        eli.addInstrument(Instrument.DRUMS);
+        eli.addInstrument(Talent.DRUMS);
 
         dao.save(ash);
         dao.save(phil);
@@ -50,7 +50,7 @@ public class Main {
 /*
     private static void selectRandomInstrument(BandMember bm) {
 
-        List<Instrument> instruments = bm.getInstruments();
+        List<Talent> instruments = bm.getInstruments();
         Random randomizer = new Random();
         int selected = randomizer.nextInt(instruments.size());
         bm.selectInstrument(instruments.get(selected));
