@@ -1,8 +1,13 @@
 package com.romanmarkunas.bandshuffle;
 
+import com.romanmarkunas.bandshuffle.domain.Band;
+import com.romanmarkunas.bandshuffle.domain.BandMember;
+import com.romanmarkunas.bandshuffle.domain.Talent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 class Shuffler {
 
@@ -19,8 +24,9 @@ class Shuffler {
             while (!band.full()) {
 
                 BandMember randomMusiscian = musicians.get(rn.nextInt(musicians.size()));
-
-                band.add(randomMusiscian, randomMusiscian.getTalent());
+                List<Set<Talent>> randomMusicianTalents = new ArrayList<>(randomMusiscian.getTalentCombos());
+                Set<Talent> randomTalentSet = randomMusicianTalents.get(rn.nextInt(randomMusicianTalents.size()));
+                band.add(randomMusiscian, randomTalentSet);
             }
 
             rota.add(band);
