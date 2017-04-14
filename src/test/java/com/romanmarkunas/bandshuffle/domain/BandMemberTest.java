@@ -87,4 +87,15 @@ public class BandMemberTest {
         assertEquals(johnTalents, john.getTalentCombos());
         assertEquals(linnTalents, linn.getTalentCombos());
     }
+
+    @Test
+    public void testEqualsAndHashCode() {
+
+        BandMember johnClone = new BandMember(9,"John", "Doe", "vinniepooh1995@hotmail.com");
+        BandMember badClone = new BandMember(1,"Johny", "Doe", "vinniepooh1995@hotmail.com");
+
+        assertTrue(john.equals(johnClone));
+        assertFalse(john.equals(badClone));
+        assertEquals(john.hashCode(), johnClone.hashCode());
+    }
 }

@@ -52,4 +52,22 @@ public class BandMember {
 
         return this.getFullName();
     }
+
+    @Override
+    public int hashCode() {
+
+        return 3 * name.hashCode() + 5 * surname.hashCode() + 7 * email.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) { return true; }
+        if (null == obj) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+
+        BandMember bm = (BandMember) obj;
+
+        return (this.getEmail().equals(bm.getEmail()) && this.getFullName().equals(bm.getFullName()));
+    }
 }
