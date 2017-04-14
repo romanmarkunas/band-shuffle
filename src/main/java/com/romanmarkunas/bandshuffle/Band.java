@@ -1,15 +1,18 @@
 package com.romanmarkunas.bandshuffle;
 
+import com.romanmarkunas.bandshuffle.domain.BandMember;
+import com.romanmarkunas.bandshuffle.domain.Talent;
+
 import java.util.*;
 
-class Band {
+public class Band {
 
     private final Map<Talent, Integer> composition;
     private Map<Talent, Integer> talentsToFill;
-    private Map<BandMember, List<Talent>> members;
+    private Map<BandMember, Set<Talent>> members;
 
 
-    Band(Map<Talent, Integer> composition) {
+    public Band(Map<Talent, Integer> composition) {
 
         this.members = new HashMap<>();
         this.composition = new HashMap<>(composition);
@@ -17,40 +20,45 @@ class Band {
     }
 
 
-    boolean add(BandMember member, Talent talent) {
+    public boolean add(BandMember member, Set<Talent> talentSet) {
 
-        if (talentsToFill.containsKey(talent)) {
+        boolean addSuccessful = false;
 
-            int moreNeeded = talentsToFill.get(talent);
+        if (member == null || members.containsKey(member) || talentSet == null) {
 
-            if (moreNeeded > 0) {
+            return false;
+        }
 
-                if (!members.containsKey(member)) {
+        for (Talent talent : talentSet) {
 
-                    members.put(member, new ArrayList<>(2));
-                }
+            if (talentsToFill.containsKey(talent)) {
 
-                List<Talent> musicianTalents = members.get(member);
+                int moreNeeded = talentsToFill.get(talent);
 
-                if (!musicianTalents.contains(talent)) {
+                if (moreNeeded > 0) {
 
-                    members.get(member).add(talent);
+                    if (!members.containsKey(member)) {
 
-                    talentsToFill.put(talent, moreNeeded - 1);
+                        members.put(member, new HashSet<>());
+                    }
 
-                    return true;
+                    if (members.get(member).add(talent)) {
+
+                        talentsToFill.put(talent, moreNeeded - 1);
+                        addSuccessful = true;
+                    }
                 }
             }
         }
 
-        return false;
+        return addSuccessful;
     }
 
-    boolean remove(BandMember member) {
+    public boolean remove(BandMember member) {
 
         if (members.containsKey(member)) {
 
-            List<Talent> musicianTalents = members.get(member);
+            Set<Talent> musicianTalents = members.get(member);
 
             for (Talent i : musicianTalents) {
 
@@ -64,32 +72,29 @@ class Band {
         return false;
     }
 
-    boolean full() {
+    public boolean full() {
 
         for (Integer moreNeeded : talentsToFill.values()) {
 
-            if (moreNeeded > 0) {
-
-                return false;
-            }
+            if (moreNeeded > 0) { return false; }
         }
 
         return true;
     }
 
-    Band getBandWithSameComposition() {
+    public Band getBandWithSameComposition() {
 
         return new Band(composition);
     }
 
-    Map<Talent, Integer> getComposition() {
+    public Map<Talent, Integer> getComposition() {
 
         return new HashMap<>(composition);
     }
 
-    Map<BandMember, List<Talent>> getMembers() {
+    public Map<BandMember, Set<Talent>> getMembers() {
 
-        return new HashMap<>(members);
+        return Collections.unmodifiableMap(members);
     }
 
     @Override
