@@ -1,6 +1,6 @@
 # IntelliJ IDEA project settings
 .idea/
-band-shuffle.iml
+bandshuffle.iml
 
 # Output jars
 target/
