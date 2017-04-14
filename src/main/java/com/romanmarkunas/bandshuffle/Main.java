@@ -8,6 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // TODO - builder for BandMember with 2 methods, buildFromDatabase and buildNew (from database has id to supply)
+        // when building from database
+
         // TODO - strategy patter for shuffle class to choose different sorters: spread evenly, random - these will
         // automatically spread different people in the list of performance dates
 
@@ -17,6 +20,15 @@ public class Main {
         // this can remove overhead of resorting list every time if done properly. OR maybe it is more efficient to resort
         // every time, but use binary tree. There is option to use hash list for that matter also and then on hash collision
         // use provided sorting strategy
+
+        // TODO - IDEA - each members capacity can be evaluated mathematically as LoadFactor x TalentSet for each
+        // Talent set he has => you get n mathematical representations where n is 8 possible member talent sets
+        // then you can combine these via some smart algo or at least with brute force and see which combinations are
+        // not providing sufficient required capacity. Then use combinations which provide required capacity to
+        // form rota. Add members to band not via member + Talent, but with member + talent set to utilize full
+        // member capacity easily. Exact combination can be selected with mentioned strategies. This also helps for
+        // different choosing strategies like exploit members on full to allow for longer breaks or load as less as
+        // possible
 
         // create comparator objects for band members for dynamic sorting
 /*
