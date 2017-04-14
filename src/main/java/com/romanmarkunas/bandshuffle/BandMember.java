@@ -1,55 +1,52 @@
 package com.romanmarkunas.bandshuffle;
 
 
+import java.util.*;
+
 public class BandMember {
 
     private int id;     // this parameter is necessary for deleting and updating, but not for creating
                         // consider builder pattern here
     private String name;
     private String surname;
-    private Talent talent;
-//    private ArrayList<Talent> instrumentList;
-//    private Talent selectedInstrument;
+    private Set<Set<Talent>> talentCombos;
+    private String email;
 
-//
 //    private Load maxLoad;
 //    private ArrayList<LocalDate> unavailable;
-//    private boolean canLead;
+//    private ArrayList<LocalData> lastYearPerformances;
 
+    BandMember(int id, String name, String surname, String email) {
 
-    BandMember(String name, String surname, Talent talent) {
-
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.talent = talent;
-//        this.instrumentList = new ArrayList<>();
-//        this.selectedInstrument = null;
+        this.email = email;
+        this.talentCombos = new HashSet<>();
     }
 
-/*
-    void addInstrument(Talent i) {
 
-        if (!instrumentList.contains(i)) {
+    public int getId() { return id; }
 
-            instrumentList.add(i);
+    public String getFullName() { return (name + " " + surname); }
+
+    public String getEmail() { return email; }
+
+    public void addSimultaneouslyUsable(Set<Talent> talentSet) {
+
+        if (talentSet != null && !talentSet.isEmpty()) {
+
+            talentCombos.add(talentSet);
         }
     }
 
-    void selectInstrument(Talent i) {
+    public void removeTalent(Talent talent) {
 
-        if (instrumentList.contains(i)) {
-
-            selectedInstrument = i;
-        }
+        talentCombos.removeIf(talents -> talents.contains(talent));
     }
-*/
-    String getFullName() { return (name + " " + surname); }
 
-    Talent getTalent() { return talent; }
-
-    //    List<Talent> getInstruments() { return instrumentList; }
-//    Talent getSelectedInstrument() { return selectedInstrument; }
-
+    // TODO - create immutable sets here for safety
+    public Set<Set<Talent>> getTalentCombos() { return Collections.unmodifiableSet(talentCombos); }
 
     @Override
     public String toString() {
