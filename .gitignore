@@ -1,9 +1,9 @@
 # IntelliJ IDEA project settings
 .idea/
-band-shuffle.iml
+bandshuffle.iml
 
 # Output jars
-out/
+target/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
